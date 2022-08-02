@@ -1,3 +1,5 @@
+// I needed help with this one understanding the proper way to make it work so i had to watch a video.
+
 var subsets = function(nums) {
     let results = []
     let subset = []
@@ -14,11 +16,7 @@ var subsets = function(nums) {
     }
 
     dfs(0)
-
     return results
-
-    
-
 };
 
 
