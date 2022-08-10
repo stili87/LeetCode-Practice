@@ -1,5 +1,17 @@
 var floodFill = function(image, sr, sc, color) {
 
+        // make a stack with the starting node in it
+    // make a set to record where we have been
+    
+    // repeat until stack is empty
+    // pop off the stack the node
+    // add the current node to visited
+    // check the node if it is different than the color provided
+    // find all the neighbors of that node that have the same color and only 4 directions
+    // change the color of the node
+    // add all the valid neighbors to the stack
+
+
     const findNeighbors = (node, image) =>  {
         const [row, col] = node
         const neighbors = [
