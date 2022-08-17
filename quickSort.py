@@ -1,5 +1,5 @@
 class Solution:
-    def sortArray(self, nums: List[int]) -> List[int]:
+    def sortArray(self, nums):
         # first grab a pivot
         # split left and right sides of the middle of list
         # pick piviots going down, on the way back up the recursion stack, compare and sort
