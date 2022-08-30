@@ -1,1 +1,1 @@
-console.log(2*(10**0))
+console.log(Math.min(null, undefined, 1))

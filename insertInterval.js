@@ -5,11 +5,11 @@
  */
  var insert = function(intervals, newInterval) {
     if(!intervals.length) return [newInterval]
-    
     const isOverLap = (i1, i2) => {
         if(i2[0] >= i1[0] && i2[0] <= i1[1]) return true  // [1,3] & [2,5]
         if(i2[1] >= i1[0] && i2[1] <= i1[1]) return true // [2,5] & [4,10]
         if(i2[0] <= i1[0] && i2[1] >= i1[1]) return true // [6,9] & [5,10]
+        return false
      }
 
     //if interval fits at the beginning
@@ -32,14 +32,15 @@
            newIntervals.push(newInterval)
             idx += 1
            }
-        // if overlap, push in only the overlapping interval, reset the new Interval to the one we just created, move to next index
+        // if overlap, reset the new Interval to the correct min and max, move to next index
         else if(isOverLap(intervals[idx], newInterval)){
             newInterval = [Math.min(intervals[idx][0], newInterval[0]), Math.max(intervals[idx][1], newInterval[1])]
             overLapStart = true
             idx++
         }
-        // if no overlap and it does not fit between
+        // if no overlap and it does not fit between, just push in the idx currently being examined
         else{
+            //if overlap is found and this index is not overlapping, push the over lap in. Mark overlap as completed.
             if(overLapStart){
                 newIntervals.push(newInterval)
                 overLapStart = false
@@ -49,11 +50,8 @@
            }
         
     }
-    
-    if(overLapStart){
-        newIntervals.push(newInterval)
-        return newIntervals
-    }
+    //if the loop ends with the overlap still active, push the overlap in as it will be the last interval.
+    if(overLapStart) newIntervals.push(newInterval)
     return newIntervals
     
 };
